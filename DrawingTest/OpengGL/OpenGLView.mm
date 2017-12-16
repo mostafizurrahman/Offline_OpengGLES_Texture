@@ -70,6 +70,7 @@ const GLubyte Indices[] = {
     [self setupRenderBuffer];
     [self setupFrameBuffer];
     shaderProgram = [[GLShaderProgram alloc] initWithVS:@"QuadVProgram" FS:@"QuadFProgram"];
+    quadProgram =  [[GLShaderProgram alloc] initWithVS:@"QuadVShader" FS:@"QuadFShader"];
     [self setupVBOs];
     texture1 = [self setupTexture:@"cat.png"];
     texture2 = [self setupTexture:@"img.png"];
@@ -199,7 +200,7 @@ const GLubyte Indices[] = {
     [self getImage:offscreenTextureSize];
     
     
-    
+    glUseProgram(quadProgram.shaderHandle);
     // 3. RESTORE DEFAULT FRAME BUFFER
     glBindFramebuffer(GL_FRAMEBUFFER, default_frame_buffer);
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -209,16 +210,25 @@ const GLubyte Indices[] = {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glEnableVertexAttribArray(quadProgram.a_TexturePosition);
+    glVertexAttribPointer(quadProgram.a_TexturePosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, Position));
+    glEnableVertexAttribArray(quadProgram.a_TextureCoordinate);
+    glVertexAttribPointer(quadProgram.a_TextureCoordinate, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, TexCoord));
     
     
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, offscreenTexture);
+    glUniform1i(quadProgram.u_BackgroundTextureRGB, 0);
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
     
     
+    glBindRenderbuffer(GL_RENDERBUFFER, default_frame_buffer);
+    [_context presentRenderbuffer:GL_RENDERBUFFER];
     
-    
-    
-    
-    
+    [self getImage:CGSizeMake( self.bounds.size.width * 2,  self.bounds.size.height * 2)];
     
     
     
@@ -252,8 +262,6 @@ const GLubyte Indices[] = {
     
     [self getImage:CGSizeMake(1080, 1822)];
     */
-    glBindRenderbuffer(GL_RENDERBUFFER, renderBuffer);
-    [_context presentRenderbuffer:GL_RENDERBUFFER];
     
 }
 

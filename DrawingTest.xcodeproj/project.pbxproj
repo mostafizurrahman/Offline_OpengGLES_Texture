@@ -34,6 +34,8 @@
 		EB5ED4E81FD9E1150044CC42 /* gaussianblur.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EB5ED4E61FD9E1140044CC42 /* gaussianblur.fsh */; };
 		EB5ED4E91FD9E1150044CC42 /* gaussianblur.vsh in Resources */ = {isa = PBXBuildFile; fileRef = EB5ED4E71FD9E1140044CC42 /* gaussianblur.vsh */; };
 		EB695FE61FE5872A005023DA /* GLShaderProgram.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB695FE51FE5872A005023DA /* GLShaderProgram.mm */; };
+		EB695FEA1FE59CFC005023DA /* QuadFShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EB695FE91FE59CFC005023DA /* QuadFShader.glsl */; };
+		EB695FEC1FE59D13005023DA /* QuadVShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EB695FEB1FE59D13005023DA /* QuadVShader.glsl */; };
 		EB922FBC1FE53D8F0088E88A /* QuadFProgram.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EB922FBA1FE53D8E0088E88A /* QuadFProgram.glsl */; };
 		EB922FBD1FE53D8F0088E88A /* QuadVProgram.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EB922FBB1FE53D8F0088E88A /* QuadVProgram.glsl */; };
 /* End PBXBuildFile section */
@@ -94,6 +96,8 @@
 		EB5ED4E71FD9E1140044CC42 /* gaussianblur.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vsh; sourceTree = "<group>"; };
 		EB695FE41FE5872A005023DA /* GLShaderProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLShaderProgram.h; sourceTree = "<group>"; };
 		EB695FE51FE5872A005023DA /* GLShaderProgram.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GLShaderProgram.mm; sourceTree = "<group>"; };
+		EB695FE91FE59CFC005023DA /* QuadFShader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = QuadFShader.glsl; sourceTree = "<group>"; };
+		EB695FEB1FE59D13005023DA /* QuadVShader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = QuadVShader.glsl; sourceTree = "<group>"; };
 		EB922FBA1FE53D8E0088E88A /* QuadFProgram.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QuadFProgram.glsl; sourceTree = "<group>"; };
 		EB922FBB1FE53D8F0088E88A /* QuadVProgram.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QuadVProgram.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +163,8 @@
 				BE1C3C381FA0586700D45815 /* SimpleFragment.glsl */,
 				EB695FE41FE5872A005023DA /* GLShaderProgram.h */,
 				EB695FE51FE5872A005023DA /* GLShaderProgram.mm */,
+				EB695FEB1FE59D13005023DA /* QuadVShader.glsl */,
+				EB695FE91FE59CFC005023DA /* QuadFShader.glsl */,
 			);
 			path = DrawingTest;
 			sourceTree = "<group>";
@@ -345,9 +351,11 @@
 				EB0F84FB1FBBA41D00B8DCC7 /* spot2.jpg in Resources */,
 				EB5ED4E31FD9C04C0044CC42 /* image1.jpg in Resources */,
 				EB0F84F71FBB9C2600B8DCC7 /* image.jpeg in Resources */,
+				EB695FEA1FE59CFC005023DA /* QuadFShader.glsl in Resources */,
 				EB922FBD1FE53D8F0088E88A /* QuadVProgram.glsl in Resources */,
 				BE1C3C371FA0583C00D45815 /* SimpleVertex.glsl in Resources */,
 				BE3BB9611FA09E87003E63C7 /* Particle.png in Resources */,
+				EB695FEC1FE59D13005023DA /* QuadVShader.glsl in Resources */,
 				EB5ED4E51FD9C9220044CC42 /* img.png in Resources */,
 				BE12AF991F9EF52000FB2186 /* Main.storyboard in Resources */,
 				BE12AFC51F9EFB1400FB2186 /* image.jpg in Resources */,
