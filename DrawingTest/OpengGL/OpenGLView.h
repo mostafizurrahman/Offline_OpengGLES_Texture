@@ -36,7 +36,6 @@
     GLuint renderBuffer;
     GLuint depthBuffer;
     
-    GLuint quadProgram;
     GLuint u_BaseTextureRGB;
     GLuint u_TextureBackground;
     GLuint u_TextureFrame;
@@ -45,5 +44,6 @@
     
     
 }
-
+-(void)renderTexture;
+-(void)initializeRenderer;
 @end

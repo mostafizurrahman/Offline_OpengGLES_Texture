@@ -19,4 +19,13 @@
 //    [self.view addSubview:_glView];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.glView initializeRenderer];
+    
+}
+- (IBAction)renderTexture:(id)sender {
+    [self.glView renderTexture];
+}
+
 @end
