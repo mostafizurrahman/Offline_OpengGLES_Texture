@@ -48,26 +48,34 @@ const GLubyte Indices[] = {
     _eaglLayer = (CAEAGLLayer*) self.layer;
     _eaglLayer.opaque = NO;
     _eaglLayer.drawableProperties =
-    [NSDictionary dictionaryWithObjectsAndKeys: kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
+    [NSDictionary dictionaryWithObjectsAndKeys: kEAGLColorFormatRGBA8,
+     kEAGLDrawablePropertyColorFormat, nil];
 }
 
 - (void)setupContext {
-    EAGLRenderingAPI api = kEAGLRenderingAPIOpenGLES2;
-    _context = [[EAGLContext alloc] initWithAPI:api];
-    self.context = _context;
+    _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    
+    GLKView* view = (GLKView*) self;
+    view.context = _context;
+    
     if (!_context) {
         NSLog(@"Failed to initialize OpenGLES 2.0 context");
         exit(1);
     }
+    
     if (![EAGLContext setCurrentContext:_context]) {
         NSLog(@"Failed to set current OpenGL context");
         exit(1);
     }
-    self.opaque = NO;
+    
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 -(void)initializeRenderer{
-    [self setupRenderBuffer];
+//    [self setupRenderBuffer];
     [self setupFrameBuffer];
     shaderProgram = [[GLShaderProgram alloc] initWithVS:@"QuadVProgram" FS:@"QuadFProgram"];
     quadProgram =  [[GLShaderProgram alloc] initWithVS:@"QuadVShader" FS:@"QuadFShader"];
@@ -88,11 +96,11 @@ const GLubyte Indices[] = {
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
 }
 
-- (void)setupRenderBuffer {
-    glGenRenderbuffers(1, &renderBuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER, renderBuffer);
-    [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];
-}
+//- (void)setupRenderBuffer {
+//    glGenRenderbuffers(1, &renderBuffer);
+//    glBindRenderbuffer(GL_RENDERBUFFER, renderBuffer);
+//    [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];
+//}
 
 - (void)setupFrameBuffer {
     
@@ -162,15 +170,16 @@ const GLubyte Indices[] = {
     
     
     
-//    [self bindDrawable];
+    [self bindDrawable];
     // 1. SAVE OUT THE DEFAULT FRAME BUFFER
     static GLint default_frame_buffer = 0;
     glGetIntegerv(GL_FRAMEBUFFER_BINDING, &default_frame_buffer);
     
     // 2. RENDER TO OFFSCREEN RENDER TARGET
     glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+    
     glViewport(0, 0, offscreenTextureSize.width, offscreenTextureSize.height);
-    glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
+    glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     /// DRAW THE SCENE ///
     
@@ -196,19 +205,20 @@ const GLubyte Indices[] = {
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
     glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
+//
+//    [self getImage:offscreenTextureSize];
     
-    [self getImage:offscreenTextureSize];
     
-    
-    glUseProgram(quadProgram.shaderHandle);
     // 3. RESTORE DEFAULT FRAME BUFFER
     glBindFramebuffer(GL_FRAMEBUFFER, default_frame_buffer);
-    glBindTexture(GL_TEXTURE_2D, 0);
     
     // 4. RENDER FULLSCREEN QUAD
     glViewport(0, 0, self.bounds.size.width * 2, self.bounds.size.height * 2);
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    
+    glBindProgramPipelineEXT(quadProgram.shaderHandle);
     
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
     glEnableVertexAttribArray(quadProgram.a_TexturePosition);
@@ -224,11 +234,11 @@ const GLubyte Indices[] = {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
     glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
     
+    [self getImage:CGSizeMake( self.bounds.size.width * 2,  self.bounds.size.height * 2)];
     
-    glBindRenderbuffer(GL_RENDERBUFFER, default_frame_buffer);
+//
     [_context presentRenderbuffer:GL_RENDERBUFFER];
     
-    [self getImage:CGSizeMake( self.bounds.size.width * 2,  self.bounds.size.height * 2)];
     
     
     
