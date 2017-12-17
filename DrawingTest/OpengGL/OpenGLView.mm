@@ -10,6 +10,9 @@ typedef struct {
 
 @interface OpenGLView(){
     GLShaderProgram *shaderProgram;
+    
+    
+    GLShaderProgram *blenderProgram;
     GLuint offscreenTexture;
     GLShaderProgram *quadProgram;
     
@@ -64,12 +67,15 @@ const GLubyte Indices[] = {
         exit(1);
     }
     self.opaque = NO;
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 -(void)initializeRenderer{
     [self setupFrameBuffer];
     shaderProgram = [[GLShaderProgram alloc] initWithVS:@"QuadVProgram" FS:@"QuadFProgram"];
     quadProgram =  [[GLShaderProgram alloc] initWithVS:@"QuadVShader" FS:@"QuadFShader"];
+    blenderProgram =  [[GLShaderProgram alloc] initWithVS:@"FilterVShader" FS:@"FilterFShader"];
     [self setupVBOs];
     texture1 = [self setupTexture:@"cat.png"];
     texture2 = [self setupTexture:@"img.png"];
@@ -189,6 +195,29 @@ const GLubyte Indices[] = {
     glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
     
     //    [self getImage:offscreenTextureSize]; //check GPU image for higher resultion. it should be 1080X1822
+    
+    
+    
+    glUseProgram(blenderProgram.shaderHandle);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glEnableVertexAttribArray(blenderProgram.a_TexturePosition);
+    glVertexAttribPointer(blenderProgram.a_TexturePosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, Position));
+    glEnableVertexAttribArray(blenderProgram.a_TextureCoordinate);
+    glVertexAttribPointer(blenderProgram.a_TextureCoordinate, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, TexCoord));
+    
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    glUniform1i(blenderProgram.u_BackgroundTextureRGB, 0);
+    
+    glActiveTexture(GL_TEXTURE0 + 1);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glUniform1i(blenderProgram.u_BackgroundTextureRGB, 1);
+    
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
+    
+    
     
     
     // 3. RESTORE DEFAULT FRAME BUFFER
