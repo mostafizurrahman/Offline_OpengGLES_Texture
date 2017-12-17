@@ -29,6 +29,8 @@
 		EB0F84F71FBB9C2600B8DCC7 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84F61FBB9C2600B8DCC7 /* image.jpeg */; };
 		EB0F84F91FBBA10800B8DCC7 /* spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84F81FBBA10800B8DCC7 /* spot.jpg */; };
 		EB0F84FB1FBBA41D00B8DCC7 /* spot2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84FA1FBBA41D00B8DCC7 /* spot2.jpg */; };
+		EB22C3F51FE6EFE000872FC9 /* FilterFShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EB22C3F31FE6EFDF00872FC9 /* FilterFShader.glsl */; };
+		EB22C3F61FE6EFE000872FC9 /* FilterVShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = EB22C3F41FE6EFDF00872FC9 /* FilterVShader.glsl */; };
 		EB5ED4E31FD9C04C0044CC42 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB5ED4E21FD9C04B0044CC42 /* image1.jpg */; };
 		EB5ED4E51FD9C9220044CC42 /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5ED4E41FD9C9220044CC42 /* img.png */; };
 		EB5ED4E81FD9E1150044CC42 /* gaussianblur.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EB5ED4E61FD9E1140044CC42 /* gaussianblur.fsh */; };
@@ -90,6 +92,8 @@
 		EB0F84F61FBB9C2600B8DCC7 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		EB0F84F81FBBA10800B8DCC7 /* spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spot.jpg; sourceTree = "<group>"; };
 		EB0F84FA1FBBA41D00B8DCC7 /* spot2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spot2.jpg; sourceTree = "<group>"; };
+		EB22C3F31FE6EFDF00872FC9 /* FilterFShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FilterFShader.glsl; path = OpengGL/FilterFShader.glsl; sourceTree = "<group>"; };
+		EB22C3F41FE6EFDF00872FC9 /* FilterVShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FilterVShader.glsl; path = OpengGL/FilterVShader.glsl; sourceTree = "<group>"; };
 		EB5ED4E21FD9C04B0044CC42 /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
 		EB5ED4E41FD9C9220044CC42 /* img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img.png; sourceTree = "<group>"; };
 		EB5ED4E61FD9E1140044CC42 /* gaussianblur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.fsh; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		BE12AF8D1F9EF52000FB2186 /* DrawingTest */ = {
 			isa = PBXGroup;
 			children = (
+				EB22C3F41FE6EFDF00872FC9 /* FilterVShader.glsl */,
+				EB22C3F31FE6EFDF00872FC9 /* FilterFShader.glsl */,
 				EB695FE31FE586BB005023DA /* Res */,
 				BE12AF8E1F9EF52000FB2186 /* Supporting Files */,
 				BE1C3C2B1FA0571C00D45815 /* OpenGLView.h */,
@@ -341,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB922FBC1FE53D8F0088E88A /* QuadFProgram.glsl in Resources */,
+				EB22C3F51FE6EFE000872FC9 /* FilterFShader.glsl in Resources */,
 				BEE52CB31FAA1C60001E1A7E /* bw.jpg in Resources */,
 				EB0F84F91FBBA10800B8DCC7 /* spot.jpg in Resources */,
 				EB5ED4E91FD9E1150044CC42 /* gaussianblur.vsh in Resources */,
@@ -353,6 +360,7 @@
 				EB0F84F71FBB9C2600B8DCC7 /* image.jpeg in Resources */,
 				EB695FEA1FE59CFC005023DA /* QuadFShader.glsl in Resources */,
 				EB922FBD1FE53D8F0088E88A /* QuadVProgram.glsl in Resources */,
+				EB22C3F61FE6EFE000872FC9 /* FilterVShader.glsl in Resources */,
 				BE1C3C371FA0583C00D45815 /* SimpleVertex.glsl in Resources */,
 				BE3BB9611FA09E87003E63C7 /* Particle.png in Resources */,
 				EB695FEC1FE59D13005023DA /* QuadVShader.glsl in Resources */,
