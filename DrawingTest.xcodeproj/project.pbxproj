@@ -28,6 +28,7 @@
 		BEE52CB31FAA1C60001E1A7E /* bw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEE52CB21FAA1C60001E1A7E /* bw.jpg */; };
 		DA5EF7AA1FEF88B00073B19B /* CannyEdge.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF7A91FEF88B00073B19B /* CannyEdge.glsl */; };
 		DA5EF7AC1FEF89C60073B19B /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF7AB1FEF89C60073B19B /* sample.jpg */; };
+		DA5EF7B01FEF9FFF0073B19B /* CannyFShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF7AF1FEF9FFF0073B19B /* CannyFShader.glsl */; };
 		EB0F84F71FBB9C2600B8DCC7 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84F61FBB9C2600B8DCC7 /* image.jpeg */; };
 		EB0F84F91FBBA10800B8DCC7 /* spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84F81FBBA10800B8DCC7 /* spot.jpg */; };
 		EB0F84FB1FBBA41D00B8DCC7 /* spot2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84FA1FBBA41D00B8DCC7 /* spot2.jpg */; };
@@ -94,6 +95,7 @@
 		DA5EF7A91FEF88B00073B19B /* CannyEdge.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = CannyEdge.glsl; sourceTree = "<group>"; };
 		DA5EF7AB1FEF89C60073B19B /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		DA5EF7AD1FEF8AF00073B19B /* BCDefinedConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCDefinedConstant.h; sourceTree = "<group>"; };
+		DA5EF7AF1FEF9FFF0073B19B /* CannyFShader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = CannyFShader.glsl; sourceTree = "<group>"; };
 		EB0F84F61FBB9C2600B8DCC7 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		EB0F84F81FBBA10800B8DCC7 /* spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spot.jpg; sourceTree = "<group>"; };
 		EB0F84FA1FBBA41D00B8DCC7 /* spot2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spot2.jpg; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				EB695FEB1FE59D13005023DA /* QuadVShader.glsl */,
 				EB695FE91FE59CFC005023DA /* QuadFShader.glsl */,
 				DA5EF7A91FEF88B00073B19B /* CannyEdge.glsl */,
+				DA5EF7AF1FEF9FFF0073B19B /* CannyFShader.glsl */,
 			);
 			path = DrawingTest;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB922FBC1FE53D8F0088E88A /* QuadFProgram.glsl in Resources */,
+				DA5EF7B01FEF9FFF0073B19B /* CannyFShader.glsl in Resources */,
 				EB22C3F51FE6EFE000872FC9 /* FilterFShader.glsl in Resources */,
 				BEE52CB31FAA1C60001E1A7E /* bw.jpg in Resources */,
 				EB0F84F91FBBA10800B8DCC7 /* spot.jpg in Resources */,

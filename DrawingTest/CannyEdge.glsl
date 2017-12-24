@@ -33,7 +33,7 @@ vec2 atanForCanny(float x) {
  * Function that performs canny edge detection.
  * @param coords Texture coordinates to analyize
  */
-vec4 cannyEdge(vec2 coords) {
+vec4 cannyEdge() {
     vec4 color = texture2D(u_TextureBaseRGB, v_TextureCoordinate);
     color.z = dot(color.zw, unshift);
     
@@ -56,16 +56,16 @@ vec4 cannyEdge(vec2 coords) {
         // Check maximum.
         if (forward.z >= color.z ||
             backward.z >= color.z) {
-            return vec4(0.0, 0.0, 0.0, 1.0);
+            return vec4(1.0, 1.0, 1.0, 1.0);
         } else {
             color.x += 0.5; color.y += 0.5;
-            return vec4(1.0, color.x, color.y, 1.0);
+            return vec4(0.0, 0.0, 0.0, 1.0);
         }
     }
-    return vec4(0.0, 0.0, 0.0, 1.0);
+    return vec4(1.0, 1.0, 1.0, 1.0);
 }
 
 /// Shader entry point
 void main() {
-    gl_FragColor = cannyEdge(gl_TexCoord[0].st);
+    gl_FragColor = cannyEdge();
 } 
