@@ -306,7 +306,7 @@
 				TargetAttributes = {
 					BE12AF8A1F9EF52000FB2186 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 2VZ7V842VP;
+						DevelopmentTeam = 8RJDMQAEG2;
 						ProvisioningStyle = Automatic;
 					};
 					BE12AFA31F9EF52000FB2186 = {
@@ -548,8 +548,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2VZ7V842VP;
-				INFOPLIST_FILE = DrawingTest/Info.plist;
+				DEVELOPMENT_TEAM = 8RJDMQAEG2;
+				INFOPLIST_FILE = "$(SRCROOT)/DrawingTest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ipvision.ca;
@@ -562,8 +562,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2VZ7V842VP;
-				INFOPLIST_FILE = DrawingTest/Info.plist;
+				DEVELOPMENT_TEAM = 8RJDMQAEG2;
+				INFOPLIST_FILE = "$(SRCROOT)/DrawingTest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ipvision.ca;
