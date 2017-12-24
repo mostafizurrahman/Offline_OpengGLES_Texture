@@ -1,6 +1,7 @@
 
 #import "OpenGLView.h"
 #import "GLShaderProgram.h"
+#import "BCDefinedConstant.h"
 
 typedef struct {
     float Position[3];
@@ -223,7 +224,7 @@ const GLubyte Indices[] = {
     // 3. RESTORE DEFAULT FRAME BUFFER
     glBindFramebuffer(GL_FRAMEBUFFER, default_frame_buffer);
     // 4. RENDER FULLSCREEN QUAD
-    glViewport(0, 0, self.bounds.size.width * 2, self.bounds.size.height * 2);
+    glViewport(0, 0, self.bounds.size.width * self.contentScaleFactor, self.bounds.size.height * self.contentScaleFactor);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glUseProgram(quadProgram.shaderHandle);
