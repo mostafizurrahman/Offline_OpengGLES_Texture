@@ -26,6 +26,9 @@
 		BEE52CAF1FAA0D48001E1A7E /* mk.png in Resources */ = {isa = PBXBuildFile; fileRef = BEE52CAE1FAA0D48001E1A7E /* mk.png */; };
 		BEE52CB11FAA1AF3001E1A7E /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = BEE52CB01FAA1AF3001E1A7E /* cat.png */; };
 		BEE52CB31FAA1C60001E1A7E /* bw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEE52CB21FAA1C60001E1A7E /* bw.jpg */; };
+		DA5EF7AA1FEF88B00073B19B /* CannyEdge.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF7A91FEF88B00073B19B /* CannyEdge.glsl */; };
+		DA5EF7AC1FEF89C60073B19B /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF7AB1FEF89C60073B19B /* sample.jpg */; };
+		DA5EF7B01FEF9FFF0073B19B /* CannyFShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF7AF1FEF9FFF0073B19B /* CannyFShader.glsl */; };
 		EB0F84F71FBB9C2600B8DCC7 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84F61FBB9C2600B8DCC7 /* image.jpeg */; };
 		EB0F84F91FBBA10800B8DCC7 /* spot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84F81FBBA10800B8DCC7 /* spot.jpg */; };
 		EB0F84FB1FBBA41D00B8DCC7 /* spot2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB0F84FA1FBBA41D00B8DCC7 /* spot2.jpg */; };
@@ -89,6 +92,10 @@
 		BEE52CAE1FAA0D48001E1A7E /* mk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mk.png; sourceTree = "<group>"; };
 		BEE52CB01FAA1AF3001E1A7E /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
 		BEE52CB21FAA1C60001E1A7E /* bw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bw.jpg; sourceTree = "<group>"; };
+		DA5EF7A91FEF88B00073B19B /* CannyEdge.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = CannyEdge.glsl; sourceTree = "<group>"; };
+		DA5EF7AB1FEF89C60073B19B /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		DA5EF7AD1FEF8AF00073B19B /* BCDefinedConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCDefinedConstant.h; sourceTree = "<group>"; };
+		DA5EF7AF1FEF9FFF0073B19B /* CannyFShader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = CannyFShader.glsl; sourceTree = "<group>"; };
 		EB0F84F61FBB9C2600B8DCC7 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		EB0F84F81FBBA10800B8DCC7 /* spot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spot.jpg; sourceTree = "<group>"; };
 		EB0F84FA1FBBA41D00B8DCC7 /* spot2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spot2.jpg; sourceTree = "<group>"; };
@@ -171,6 +178,8 @@
 				EB695FE51FE5872A005023DA /* GLShaderProgram.mm */,
 				EB695FEB1FE59D13005023DA /* QuadVShader.glsl */,
 				EB695FE91FE59CFC005023DA /* QuadFShader.glsl */,
+				DA5EF7A91FEF88B00073B19B /* CannyEdge.glsl */,
+				DA5EF7AF1FEF9FFF0073B19B /* CannyFShader.glsl */,
 			);
 			path = DrawingTest;
 			sourceTree = "<group>";
@@ -178,6 +187,7 @@
 		BE12AF8E1F9EF52000FB2186 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DA5EF7AD1FEF8AF00073B19B /* BCDefinedConstant.h */,
 				BE12AF8F1F9EF52000FB2186 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -230,6 +240,7 @@
 				EB5ED4E41FD9C9220044CC42 /* img.png */,
 				BE12AFC41F9EFB1400FB2186 /* image.jpg */,
 				EB0F84F61FBB9C2600B8DCC7 /* image.jpeg */,
+				DA5EF7AB1FEF89C60073B19B /* sample.jpg */,
 				EB0F84F81FBBA10800B8DCC7 /* spot.jpg */,
 				BE12AF971F9EF52000FB2186 /* Main.storyboard */,
 				BE12AF9A1F9EF52000FB2186 /* Assets.xcassets */,
@@ -347,9 +358,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB922FBC1FE53D8F0088E88A /* QuadFProgram.glsl in Resources */,
+				DA5EF7B01FEF9FFF0073B19B /* CannyFShader.glsl in Resources */,
 				EB22C3F51FE6EFE000872FC9 /* FilterFShader.glsl in Resources */,
 				BEE52CB31FAA1C60001E1A7E /* bw.jpg in Resources */,
 				EB0F84F91FBBA10800B8DCC7 /* spot.jpg in Resources */,
+				DA5EF7AC1FEF89C60073B19B /* sample.jpg in Resources */,
+				DA5EF7AA1FEF88B00073B19B /* CannyEdge.glsl in Resources */,
 				EB5ED4E91FD9E1150044CC42 /* gaussianblur.vsh in Resources */,
 				BEE52CB11FAA1AF3001E1A7E /* cat.png in Resources */,
 				BE12AF9E1F9EF52000FB2186 /* LaunchScreen.storyboard in Resources */,

@@ -1,6 +1,7 @@
 
 #import "OpenGLView.h"
 #import "GLShaderProgram.h"
+#import "BCDefinedConstant.h"
 
 typedef struct {
     float Position[3];
@@ -73,13 +74,13 @@ const GLubyte Indices[] = {
 
 -(void)initializeRenderer{
     [self setupFrameBuffer];
-    shaderProgram = [[GLShaderProgram alloc] initWithVS:@"QuadVProgram" FS:@"QuadFProgram"];
+    shaderProgram = [[GLShaderProgram alloc] initWithVS:@"QuadVProgram" FS:@"CannyFShader"];
     quadProgram =  [[GLShaderProgram alloc] initWithVS:@"QuadVShader" FS:@"QuadFShader"];
     blenderProgram =  [[GLShaderProgram alloc] initWithVS:@"FilterVShader" FS:@"FilterFShader"];
     [self setupVBOs];
-    texture1 = [self setupTexture:@"cat.png"];
-    texture2 = [self setupTexture:@"img.png"];
-    texture3 = [self setupTexture:@"bw.jpg"];
+    texture1 = [self setupTexture:@"sample.jpg"];
+//    texture2 = [self setupTexture:@"img.png"];
+//    texture3 = [self setupTexture:@"bw.jpg"];
     [self renderTexture];
 }
 
@@ -183,13 +184,13 @@ const GLubyte Indices[] = {
     glBindTexture(GL_TEXTURE_2D, texture1);
     glUniform1i(shaderProgram.u_BackgroundTextureRGB, 0);
     
-    glActiveTexture(GL_TEXTURE0 + 1);
-    glBindTexture(GL_TEXTURE_2D, texture2);
-    glUniform1i(shaderProgram.u_FrameTextureRGB, 1);
-    
-    glActiveTexture(GL_TEXTURE0 + 2);
-    glBindTexture(GL_TEXTURE_2D, texture3);
-    glUniform1i(shaderProgram.u_BaseTextureRGB, 2);
+//    glActiveTexture(GL_TEXTURE0 + 1);
+//    glBindTexture(GL_TEXTURE_2D, texture2);
+//    glUniform1i(shaderProgram.u_FrameTextureRGB, 1);
+//
+//    glActiveTexture(GL_TEXTURE0 + 2);
+//    glBindTexture(GL_TEXTURE_2D, texture3);
+//    glUniform1i(shaderProgram.u_BaseTextureRGB, 2);
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
     glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
@@ -198,24 +199,24 @@ const GLubyte Indices[] = {
     
     
     
-    glUseProgram(blenderProgram.shaderHandle);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glEnableVertexAttribArray(blenderProgram.a_TexturePosition);
-    glVertexAttribPointer(blenderProgram.a_TexturePosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, Position));
-    glEnableVertexAttribArray(blenderProgram.a_TextureCoordinate);
-    glVertexAttribPointer(blenderProgram.a_TextureCoordinate, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, TexCoord));
-    
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture2);
-    glUniform1i(blenderProgram.u_BackgroundTextureRGB, 0);
-    
-    glActiveTexture(GL_TEXTURE0 + 1);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    glUniform1i(blenderProgram.u_BackgroundTextureRGB, 1);
-    
-    
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
+//    glUseProgram(blenderProgram.shaderHandle);
+//    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+//    glEnableVertexAttribArray(blenderProgram.a_TexturePosition);
+//    glVertexAttribPointer(blenderProgram.a_TexturePosition, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, Position));
+//    glEnableVertexAttribArray(blenderProgram.a_TextureCoordinate);
+//    glVertexAttribPointer(blenderProgram.a_TextureCoordinate, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, TexCoord));
+//
+//    glActiveTexture(GL_TEXTURE0);
+//    glBindTexture(GL_TEXTURE_2D, texture2);
+//    glUniform1i(blenderProgram.u_BackgroundTextureRGB, 0);
+//
+//    glActiveTexture(GL_TEXTURE0 + 1);
+//    glBindTexture(GL_TEXTURE_2D, texture1);
+//    glUniform1i(blenderProgram.u_BackgroundTextureRGB, 1);
+//
+//
+//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+//    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
     
     
     
@@ -223,7 +224,7 @@ const GLubyte Indices[] = {
     // 3. RESTORE DEFAULT FRAME BUFFER
     glBindFramebuffer(GL_FRAMEBUFFER, default_frame_buffer);
     // 4. RENDER FULLSCREEN QUAD
-    glViewport(0, 0, self.bounds.size.width * 2, self.bounds.size.height * 2);
+    glViewport(0, 0, self.bounds.size.width * self.contentScaleFactor, self.bounds.size.height * self.contentScaleFactor);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glUseProgram(quadProgram.shaderHandle);
